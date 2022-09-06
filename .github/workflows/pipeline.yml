@@ -19,7 +19,7 @@ jobs:
       - name: Install Dependencies
         id: npm-install
         run: |
-          npm i --production-only
+          npm i --ignore-scripts
 
       - name: Lint
         id: lint
