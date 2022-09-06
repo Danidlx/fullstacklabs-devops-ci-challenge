@@ -1,0 +1,42 @@
+name: Build Pipeline
+
+on:
+  workflow_dispatch:
+  pull_request:
+    types:
+      - closed
+
+jobs:
+  build: 
+    runs-on: ubuntu-22.04
+
+    steps:
+
+      - name: Checkout
+        id: checkout
+        uses: actions/checkout@v2
+
+      - name: Install Dependencies
+        id: npm-install
+        run: |
+          npm ci --production-only
+
+      - name: Lint
+        id: lint
+        run: |
+          npm run lint
+  
+      - name: Prettier
+        id: prettier
+        run: |
+          npm run prettier
+
+      - name: Test
+        id: test
+        run: |
+          CI=true npm run test
+
+      - name: Build
+        id: build
+        run: |
+          npm run build
