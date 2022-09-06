@@ -19,7 +19,7 @@ jobs:
       - name: Install Dependencies
         id: npm-install
         run: |
-          npm i --ignore-scripts
+          npm i
           npm i prettier
           ls -lha 
 
