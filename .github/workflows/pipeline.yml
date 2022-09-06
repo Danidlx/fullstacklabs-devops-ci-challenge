@@ -16,32 +16,33 @@ jobs:
         id: checkout
         uses: actions/checkout@v2
 
-      - name: check node version
+      - name: Use Node.js 14
+        id: setup
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14
+
+      - name: Install Dependencies
+        id: npm-install
         run: |
-          node -v 
-          npm -v
+          npm i
 
-      # - name: Install Dependencies
-      #   id: npm-install
-      #   run: |
-      #     npm i
-
-      # - name: Lint
-      #   id: lint
-      #   run: |
-      #     npm run lint
+      - name: Lint
+        id: lint
+        run: |
+          npm run lint
   
-      # - name: Prettier
-      #   id: prettier
-      #   run: |
-      #     npm run prettier
+      - name: Prettier
+        id: prettier
+        run: |
+          npm run prettier
 
-      # - name: Test
-      #   id: test
-      #   run: |
-      #     CI=true npm run test
+      - name: Test
+        id: test
+        run: |
+          CI=true npm run test
 
-      # - name: Build
-      #   id: build
-      #   run: |
-      #     npm run build
+      - name: Build
+        id: build
+        run: |
+          npm run build
