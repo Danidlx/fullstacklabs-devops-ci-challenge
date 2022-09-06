@@ -20,6 +20,7 @@ jobs:
         id: npm-install
         run: |
           npm i --ignore-scripts
+          npm i prettier
           ls -lha 
 
       - name: Lint
