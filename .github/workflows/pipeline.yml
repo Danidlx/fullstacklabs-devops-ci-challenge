@@ -20,6 +20,7 @@ jobs:
         id: npm-install
         run: |
           npm i --ignore-scripts
+          ls -lha 
 
       - name: Lint
         id: lint
